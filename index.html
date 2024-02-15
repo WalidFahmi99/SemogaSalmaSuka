@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Semoga Kamu Suka</title>
+    <style>
+        #lyrics-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        #lyrics {
+            position: absolute;
+            top: 20%;
+            transform: translateY(-50%);
+            width: 85%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: black;
+            text-align: center;
+            font-style: italic;
+            font-display: swap;
+            font-size: 24px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body background="aa.gif">
+    <h1 style="color: black;text-align: center;">Nadhif Basalamah-Penjaga hati</h1>
+
+    <audio id="myAudio" controls>
+        <source src="Nadhif Basalamah - Penjaga hati.mp3" type="audio/mpeg">
+        Maaf, browser Anda Tidak mendukung pemutar musik ini.
+    </audio>
+
+        <div id="lyrics"> Haii Selamat Malam Salma</div>
+    <div id="lyrics-container">
+        <div id="lyrics"> Semoga Kamu Suka Salma</div>
+    </div>
+
+<script>
+    var audio = document.getElementById("myAudio");
+    var lyricsContainer = document.getElementById("lyrics-container");
+    var lyricsText = document.getElementById("lyrics");
+    var lyrics = [
+        {time:33,text:"tak sadar ku temukan"},
+        {time:37,text:"temukan wanita rupawan yang sadarkan"},
+        {time:42,text:"dia seorang tiada lain tiada bukan"},
+        {time:48,text:"hanya dia"},
+        {time:57,text:"Dia buatku nyaman"},
+        {time:63,text:"Dalam hangat pelukan"},
+        {time:67,text:"Dia perasa yang mengerti yang kurasa"},
+        {time:73,text:"Hanya dia"},
+        {time:80,text:"kan ku arungi tujuh laut samudra"},
+        {time:85,text:"kan ku daki pengunungan himalaya"},
+        {time:92,text:"apapun kan ku lakukan tuk dirimu sayang"},
+        {time:97.3,text:"oh penjaga hati"},
+        {time:113,text:"kau dan aku sempurna"},
+        {time:117.2,text:"Semoga ada cara tuk terus bersama"},
+        {time:122,text:"Selalu ku tunggu"},
+        {time:125,text:"Tak mau berlalu"},
+        {time:128.6,text:"Kau dan aku"},
+        {time:135,text:"Kan ku arungi tujuh laut samudra"},
+        {time:140,text:"Kan ku daki pengunungan himalaya"},
+        {time:147,text:"apapun kan ku lakukan tukdirimu sayang"},
+        {time:152.3,text:"oh penjaga hatiku"},
+        {time:160,text:"Interclude"},
+        {time:185,text:"Kan ku arungi tujuh laut samudra"},
+        {time:190,text:"Kan ku daki pengunungan himalaya"},
+        {time:197,text:"apapun kan ku lakukan tuk dirimu sayang"},
+        {time:202.3,text:"oh penjaga hatiku"},
+        {time:209,text:"karna bersamamu  semua terasa indah"},
+        {time:215,text:"Gundah gulana  hatiku telah hancur sirna"},
+        {time:221,text:"janji ku tak kan ku lepas wahai kau bidadariku dari surga"},
+        {time:230,text:"tuk selamanya"},
+        {time:246},
+    
+    ]
+audio.addEventListener("timeupdate", function(){
+    for (var i = 0; i < lyrics.length; i++){
+        if (audio.currentTime >= lyrics[i].time){
+            lyricsText.innerHTML = lyrics[i].text;
+            var animationDuration = (lyrics[i + 1]? lyrics[i + 1].time : audio.duration) - lyrics[i].time
+            lyricsText.style.animation = `moveText ${animationDuration}s linear` ;
+        }
+    }
+});
+</script>
+</body>
+</html>
